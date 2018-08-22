@@ -14,6 +14,10 @@
 
     
 ## TODO
+ - [x] Set up server
+ - [x] Create App and config
+ - [x] Create Views and routes
+ - [x] Create controllers for each view
  
 
 ## Strech Goals
