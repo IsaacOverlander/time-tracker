@@ -11,13 +11,13 @@
     <title>Time Tracker</title>
 </head>
 
-<body>
+<body ng-app="myApp">
     <h1>Time Tracker</h1>
     <nav>
-        <h1>Add Entry</h1>
-        <h1>Manage Projects</h1>
+        <h1><a href="/">Add Entry</a></h1>
+        <h1><a href="#!/projects">Manage Projects</a></h1>
     </nav>
-    
+    <ng-view></ng-view>
 </body>
 
 </html>
