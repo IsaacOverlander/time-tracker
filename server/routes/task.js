@@ -36,5 +36,8 @@ router.delete('/entry/:id', (req, res) => {
     });//End query
 });//End DELETE
 
+router.get('/project', (req, res) => {
+    res.sendStatus(200);
+})
 
 module.exports = router;

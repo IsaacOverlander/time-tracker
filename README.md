@@ -25,7 +25,7 @@
  - [x] Create POST route for entries
  - [x] Create DELETE route for entries
  - [x] Create projects form
- - [ ] Create table to display projects
+ - [x] Create table to display projects
  - [ ] Create GET route for projects
  - [ ] Create POST route for projects
  - [ ] Create DELETE route for projects
