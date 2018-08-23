@@ -5,8 +5,16 @@ myApp.controller('EntryController', function ($http) {
     let timeSpent = 0;
    
     vm.deleteEntry = function (entry) {
-        console.log('in Delete function');
-    }
+        $http({
+            method: 'DELETE',
+            url: '/task/entry/' + entry.id
+        }).then(function (response) {
+            console.log('Entry Deleted');
+            getEntries();
+        }).catch(function (error) {
+            console.log(error);
+        });//End DELETE
+    };
 
     vm.addEntry = function (entry) {
         const month = vm.date.getMonth() + 1;

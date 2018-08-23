@@ -18,7 +18,12 @@
  - [x] Create App and config
  - [x] Create Views and routes
  - [x] Create controllers for each view
- - [ ] Create Entries Form
+ - [x] Create Entries Form
+ - [x] Create table to display entries
+ - [x] Create GET route for entries
+ - [x] Create POST route for entries
+ - [x] Create DELETE route for entries
+ 
  
 
 ## Strech Goals

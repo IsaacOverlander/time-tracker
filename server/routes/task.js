@@ -18,12 +18,22 @@ router.get('/entry', (req, res) => {
 router.post('/entry', (req, res) => {
     entryToAdd = req.body;
     const query = `INSERT INTO "entries" ("task", "date", "time")
-                    VALUES ($1, $2, $3);`
+                    VALUES ($1, $2, $3);`;
     pool.query(query, [entryToAdd.task, entryToAdd.date, entryToAdd.time]).then((results) => {
         res.sendStatus(201);
     }).catch((error) => {
         res.sendStatus(500);
     });//End Query
 });// End POST
+
+router.delete('/entry/:id', (req, res) => {
+    const entryId = req.params.id;
+    const query = `DELETE FROM "entries" WHERE "id" = $1;`;
+    pool.query(query, [entryId]).then((reults) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });//End query
+});//End DELETE
 
 module.exports = router;
