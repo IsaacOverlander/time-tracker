@@ -40,7 +40,8 @@ router.delete('/entry/:id', (req, res) => {
 });//End DELETE
 
 router.get('/project', (req, res) => {
-    const query = `SELECT * FROM "projects";`;
+    const query = `SELECT "projects"."name", SUM("entries"."hours") as hours, SUM("entries"."minutes") as minutes FROM "entries"
+    JOIN "projects" ON "projects"."projectid" = "entries"."project_id" GROUP BY "projects"."name";`;
     pool.query(query).then((results) => {
         console.log(results);
         res.send(results.rows);
