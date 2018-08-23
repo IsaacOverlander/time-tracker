@@ -22,8 +22,6 @@ myApp.controller('ProjectsController', function($http) {
             method: 'GET',
             url: '/task/project'
         }).then(function (response) {
-            console.log(response.data);
-            
             vm.projectList = response.data;
         }).catch(function (error) {
             console.log(error);

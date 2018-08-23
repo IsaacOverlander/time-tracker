@@ -21,5 +21,5 @@ VALUES ('created entries table', '8/24/2018', '30');
 SELECT * FROM "entries" JOIN "projects" ON "projects"."id" = "entries"."project_id";
 DELETE FROM "entries" WHERE "id" = 23;
 
-SELECT "projects"."name", SUM("entries"."hours") as hours, SUM("entries"."minutes") as minutes FROM "entries"
+SELECT "projects"."name", "entries"."project_id", SUM("entries"."hours") as hours, SUM("entries"."minutes") as minutes FROM "entries"
 JOIN "projects" ON "projects"."projectid" = "entries"."project_id" GROUP BY "projects"."name";

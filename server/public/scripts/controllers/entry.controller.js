@@ -18,17 +18,18 @@ myApp.controller('EntryController', function ($http) {
     };
 
     vm.addEntry = function () {
+        //date variables
         const month = vm.date.getMonth() + 1;
         const day = vm.date.getDate();
         const year = vm.date.getFullYear();
         dateStarted = ([month, day, year].join('/'));
+        //Time variables
         const start = moment.utc(vm.start, 'HH:mm');
         const end = moment.utc(vm.end, 'HH:mm');
         timeSpent = moment.duration(end.diff(start));
         const hours = timeSpent._data.hours;
         const minutes = timeSpent._data.minutes;
-        console.log(minutes);
-        
+                
         vm.entryToAdd = {
             task: vm.task,
             date: dateStarted,
