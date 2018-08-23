@@ -1,7 +1,8 @@
 myApp.controller('EntryController', function ($http) {
     const vm = this;
+    vm.entryList = [];
 
-
+    //TODO
     vm.addEntry = function (entry) {
         const month = vm.date.getMonth() + 1;
         const day = vm.date.getDate();
@@ -12,7 +13,7 @@ myApp.controller('EntryController', function ($http) {
         
 
         vm.entryToAdd = {
-            description: vm.description,
+            task: vm.task,
             date: dateStarted,
             time: timeSpent
         }
@@ -24,7 +25,9 @@ myApp.controller('EntryController', function ($http) {
             method: 'GET',
             url: '/task'
         }).then(function (response) {
-            console.log(response);
+            vm.entryList = response.data;
+            console.log(vm.entryList);
+            
         }).catch(function (error) {
             console.log(error);
         });
