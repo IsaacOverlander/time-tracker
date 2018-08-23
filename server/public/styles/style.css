@@ -1,0 +1,8 @@
+.float-left {
+    float: left;
+    padding: 5px;
+}
+
+.input-length {
+    width: 150px;
+}

@@ -18,6 +18,7 @@
  - [x] Create App and config
  - [x] Create Views and routes
  - [x] Create controllers for each view
+ - [ ] Create Entries Form
  
 
 ## Strech Goals

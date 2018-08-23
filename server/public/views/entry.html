@@ -1,1 +1,28 @@
 <h1>Add an Entry</h1>
+
+<form ng-submit="ec.addEntry(ec.entryToAdd)">
+    <div class="float-left">
+        <label>Task</label> 
+        <br>
+        <input type="text" placeholder="What did you do?" style="width: 42em;" ng-model="ec.description" required/>
+    </div>
+    <div class="float-left">
+        <label>Date</label> 
+        <br>
+        <input type="date" ng-model="ec.date" value="2018-06-01" required/>
+    </div>
+    <div class="float-left">
+        <label>Start Time<span>(Military Time)</span></label> 
+        <br>
+        <input class="input-length" type="number" placeholder="Start Time" ng-model="ec.start" required min="0030" max="2400"/>
+    </div>
+    <div class="float-left">
+        <label>End Time<span>(Military Time)</span></label>
+        <br>
+        <input class="input-length" type="number" placeholder="End Time" ng-model="ec.end" required min="0030" max="2400"/>
+    </div>
+    <br>
+    <div>
+    <input type="submit" value="Submit" />
+    </div>
+</form>
