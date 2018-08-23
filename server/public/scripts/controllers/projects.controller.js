@@ -1,5 +1,7 @@
 myApp.controller('ProjectsController', function($http) {
     const vm = this;
 
-    console.log('Projects');
+    vm.addProject = function (project) {
+        console.log('In add project');
+    }
 });
