@@ -10,7 +10,7 @@
             <label>Project</label>
             <br>
             <select ng-model="ec.project">
-                <option ng-repeat="project in ec.projectList" value="{{project.id}}">{{project.name}}</option>
+                <option ng-repeat="project in ec.projectList" value="{{project.projectid}}">{{project.name}}</option>
             </select>
         </div>
     <div class="float-left">
@@ -19,14 +19,14 @@
         <input type="date" ng-model="ec.date" value="2018-06-01" required/>
     </div>
     <div class="float-left">
-        <label>Start Time<span>(Military Time)</span></label>
+        <label>Start Time</label>
         <br>
-        <input class="input-length" type="number" placeholder="Start Time" ng-model="ec.start" required min="0030" max="2400" />
+        <input class="input-length" type="text" placeholder="Start Time" ng-model="ec.start" />
     </div>
     <div class="float-left">
-        <label>End Time<span>(Military Time)</span></label>
+        <label>End Time</label>
         <br>
-        <input class="input-length" type="number" placeholder="End Time" ng-model="ec.end" required min="0030" max="2400" />
+        <input class="input-length" type="text" placeholder="End Time" ng-model="ec.end" />
     </div>
     <br>
     <div>
@@ -41,7 +41,7 @@
             <th>Entry</Th>
             <th>Project</th>
             <th>Date</Th>
-            <th>Hours</Th>
+            <th>Time(hours:minutes)</Th>
             <th>Actions</Th>
         </tr>
     </thead>
@@ -50,7 +50,7 @@
             <td>{{entry.task}}</td>
             <td>{{entry.name}}</td>
             <td>{{entry.date}}</td>
-            <td>{{entry.time}}</td>
+            <td>{{entry.hours}}:{{entry.minutes}}</td>
             <td><button ng-click="ec.deleteEntry(entry)">Delete</button></td>
         </tr>
     </tbody>
