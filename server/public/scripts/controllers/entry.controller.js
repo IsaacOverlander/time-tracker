@@ -4,7 +4,9 @@ myApp.controller('EntryController', function ($http) {
     let dateStarted = '';
     let timeSpent = 0;
    
-    
+    vm.deleteEntry = function (entry) {
+        console.log('in Delete function');
+    }
 
     vm.addEntry = function (entry) {
         const month = vm.date.getMonth() + 1;
@@ -20,7 +22,7 @@ myApp.controller('EntryController', function ($http) {
         
         $http({
             method: 'POST',
-            url: '/task',
+            url: '/task/entry',
             data: vm.entryToAdd
         }).then(function(response) {
             getEntries();
@@ -33,7 +35,7 @@ myApp.controller('EntryController', function ($http) {
     function getEntries() {
         $http({
             method: 'GET',
-            url: '/task'
+            url: '/task/entry'
         }).then(function (response) {
             vm.entryList = response.data;
             console.log(vm.entryList);

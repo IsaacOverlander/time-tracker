@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 //GET route for entries
-router.get('/', (req, res) => {
+router.get('/entry', (req, res) => {
     console.log('entries GET hit');
     const query = `SELECT * FROM "entries";`;
     pool.query(query).then((results) => {
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     });//End Query
 });//End GET
 
-router.post('/', (req, res) => {
+router.post('/entry', (req, res) => {
     entryToAdd = req.body;
     const query = `INSERT INTO "entries" ("task", "date", "time")
                     VALUES ($1, $2, $3);`
