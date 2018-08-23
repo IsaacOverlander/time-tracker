@@ -16,7 +16,7 @@ myApp.controller('EntryController', function ($http) {
         });//End DELETE
     };
 
-    vm.addEntry = function (entry) {
+    vm.addEntry = function () {
         const month = vm.date.getMonth() + 1;
         const day = vm.date.getDate();
         const year = vm.date.getFullYear();

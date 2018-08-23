@@ -3,8 +3,18 @@ myApp.controller('ProjectsController', function($http) {
     vm.projectList = [];
 
     //TODO
-    vm.addProject = function (project) {
-        console.log('In add project');
+    vm.addProject = function () {
+        vm.projectToAdd = {
+            name: vm.name
+        }
+        $http({
+            method: 'POST',
+            url: '/task/project',
+            data: vm.projectToAdd
+        }).then(function (response) {
+            console.log('Project Added');
+            getProjects();
+        })
     }
 
     function getProjects() {
