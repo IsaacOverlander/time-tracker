@@ -8,9 +8,10 @@
     Node.js
 
 ## SetUp
-    clone project
-    run npm install
-    run npm start
+    Clone project
+    Run npm install
+    Run npm start
+    Run queries in databse.sql
 
     
 ## TODO
@@ -23,7 +24,11 @@
  - [x] Create GET route for entries
  - [x] Create POST route for entries
  - [x] Create DELETE route for entries
- - [ ] 
+ - [x] Create projects form
+ - [ ] Create table to display projects
+ - [ ] Create GET route for projects
+ - [ ] Create POST route for projects
+ - [ ] Create DELETE route for projects
  
  
 
