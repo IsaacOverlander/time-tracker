@@ -37,7 +37,14 @@ router.delete('/entry/:id', (req, res) => {
 });//End DELETE
 
 router.get('/project', (req, res) => {
-    res.sendStatus(200);
+    const query = `SELECT * FROM "projects";`;
+    pool.query(query).then((results) => {
+        console.log(results);
+        res.send(results.rows);
+    }).catch((error) => {
+        console.log('Error making GET:', error);
+        res.sendStatus(500);
+    });
 })
 
 module.exports = router;

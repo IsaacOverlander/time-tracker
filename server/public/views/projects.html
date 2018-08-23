@@ -16,8 +16,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>project</td>
+        <tr ng-repeat="project in pc.projectList">
+            <td>{{project.name}}</td>
             <td>hours</td>
             <td>actions</td>
         </tr>
