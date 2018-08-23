@@ -3,6 +3,7 @@ myApp.controller('EntryController', function ($http) {
     vm.entryList = [];
     let dateStarted = '';
     let timeSpent = 0;
+    vm.projectList = []
    
     vm.deleteEntry = function (entry) {
         $http({
@@ -21,11 +22,14 @@ myApp.controller('EntryController', function ($http) {
         const day = vm.date.getDate();
         const year = vm.date.getFullYear();
         dateStarted = ([month, day, year].join('/'));
+        console.log(dateStarted);
+        
         timeSpent = vm.end - vm.start;
         vm.entryToAdd = {
             task: vm.task,
             date: dateStarted,
-            time: timeSpent
+            time: timeSpent,
+            project: Number(vm.project)
         }
         
         $http({
@@ -46,12 +50,23 @@ myApp.controller('EntryController', function ($http) {
             url: '/task/entry'
         }).then(function (response) {
             vm.entryList = response.data;
-            console.log(vm.entryList);
 
         }).catch(function (error) {
             console.log(error);
         });
     };
 
+    function getProjects() {
+        $http({
+            method: 'GET',
+            url: '/task/project'
+        }).then(function (response) {
+            vm.projectList = response.data;
+        }).catch(function (error) {
+            console.log(error);
+        });//End GET
+    }
+
+    getProjects();
     getEntries();
 });

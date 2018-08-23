@@ -7,6 +7,13 @@
         <input type="text" placeholder="What did you do?" style="width: 42em;" ng-model="ec.task" required/>
     </div>
     <div class="float-left">
+            <label>Project</label>
+            <br>
+            <select ng-model="ec.project">
+                <option ng-repeat="project in ec.projectList" value="{{project.id}}">{{project.name}}</option>
+            </select>
+        </div>
+    <div class="float-left">
         <label>Date</label>
         <br>
         <input type="date" ng-model="ec.date" value="2018-06-01" required/>
@@ -32,6 +39,7 @@
     <thead>
         <tr>
             <th>Entry</Th>
+            <th>Project</th>
             <th>Date</Th>
             <th>Hours</Th>
             <th>Actions</Th>
@@ -40,6 +48,7 @@
     <tbody>
         <tr ng-repeat="entry in ec.entryList">
             <td>{{entry.task}}</td>
+            <td>{{entry.name}}</td>
             <td>{{entry.date}}</td>
             <td>{{entry.time}}</td>
             <td><button ng-click="ec.deleteEntry(entry)">Delete</button></td>

@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 //GET route for entries
 router.get('/entry', (req, res) => {
     console.log('entries GET hit');
-    const query = `SELECT * FROM "entries";`;
+    const query = `SELECT * FROM "entries" JOIN "projects" ON "projects"."id" = "entries"."project_id";`;
     pool.query(query).then((results) => {
         console.log(results);
         res.send(results.rows);
@@ -17,9 +17,10 @@ router.get('/entry', (req, res) => {
 
 router.post('/entry', (req, res) => {
     entryToAdd = req.body;
-    const query = `INSERT INTO "entries" ("task", "date", "time")
-                    VALUES ($1, $2, $3);`;
-    pool.query(query, [entryToAdd.task, entryToAdd.date, entryToAdd.time]).then((results) => {
+    
+    const query = `INSERT INTO "entries" ("task", "date", "time", "project_id")
+                    VALUES ($1, $2, $3, $4);`;
+    pool.query(query, [entryToAdd.task, entryToAdd.date, entryToAdd.time, entryToAdd.project]).then((results) => {
         res.sendStatus(201);
     }).catch((error) => {
         res.sendStatus(500);
