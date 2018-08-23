@@ -19,7 +19,7 @@
         <tr ng-repeat="project in pc.projectList">
             <td>{{project.name}}</td>
             <td>hours</td>
-            <td>actions</td>
+            <td><button ng-click="pc.deleteProject(project)">Delete</button></td>
         </tr>
     </tbody>
 </table>

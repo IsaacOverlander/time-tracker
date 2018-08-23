@@ -45,6 +45,16 @@ router.get('/project', (req, res) => {
         console.log('Error making GET:', error);
         res.sendStatus(500);
     });
+});//End GET
+
+router.delete('/project/:id', (req, res) => {
+    const projectId = req.params.id;
+    const query = `DELETE FROM "projects" WHERE "id" = $1;`;
+    pool.query(query, [projectId]).then((reults) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });//End query
 })
 
 module.exports = router;
