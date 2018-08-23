@@ -15,4 +15,15 @@ router.get('/', (req, res) => {
     });//End Query
 });//End GET
 
+router.post('/', (req, res) => {
+    entryToAdd = req.body;
+    const query = `INSERT INTO "entries" ("task", "date", "time")
+                    VALUES ($1, $2, $3);`
+    pool.query(query, [entryToAdd.task, entryToAdd.date, entryToAdd.time]).then((results) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });//End Query
+});// End POST
+
 module.exports = router;
