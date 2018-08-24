@@ -19,7 +19,14 @@
   },
   "homepage": "https://github.com/IsaacOverlander/time-tracker#readme",
   "dependencies": {
+    "angular": "^1.7.3",
+    "angular-animate": "^1.7.3",
+    "angular-aria": "^1.7.3",
+    "angular-material": "^1.1.10",
+    "angular-messages": "^1.7.3",
+    "angular-route": "^1.7.3",
     "express": "^4.16.3",
+    "material": "^0.3.0",
     "pg": "^7.4.3"
   }
 }

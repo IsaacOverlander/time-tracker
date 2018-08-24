@@ -18,21 +18,22 @@ myApp.controller('EntryController', function ($http) {
     };
 
     vm.addEntry = function () {
-        //date variables
-        const month = vm.date.getMonth() + 1;
-        const day = vm.date.getDate();
-        const year = vm.date.getFullYear();
-        dateStarted = ([month, day, year].join('/'));
+        // //date variables
+        // const month = vm.date.getMonth() + 1;
+        // const day = vm.date.getDate();
+        // const year = vm.date.getFullYear();
+        // dateStarted = ([month, day, year].join('/'));
         //Time variables
         const start = moment.utc(vm.start, 'HH:mm');
         const end = moment.utc(vm.end, 'HH:mm');
         timeSpent = moment.duration(end.diff(start));
         const hours = timeSpent._data.hours;
         const minutes = timeSpent._data.minutes;
+        
                 
         vm.entryToAdd = {
             task: vm.task,
-            date: dateStarted,
+            date: vm.date,
             hours: hours,
             minutes: minutes,
             project: Number(vm.project)
@@ -56,7 +57,7 @@ myApp.controller('EntryController', function ($http) {
             url: '/task/entry'
         }).then(function (response) {
             vm.entryList = response.data;
-
+            console.log(response.data);
         }).catch(function (error) {
             console.log(error);
         });

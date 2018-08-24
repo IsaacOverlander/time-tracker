@@ -1,4 +1,4 @@
-const myApp = angular.module('myApp', ['ngRoute']);
+const myApp = angular.module('myApp', ['ngMaterial', 'ngRoute']);
 
 myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
@@ -10,4 +10,10 @@ myApp.config(function($routeProvider) {
     }).otherwise({
         templateUrl: 'views/404.html'
     });
+});
+
+myApp.controller('GeneralController', function () {
+    const vm = this;
+
+    
 })

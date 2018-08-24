@@ -5,22 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Base Angular -->
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
+    <script src="vendors/angular-aria.min.js"></script>
+    <script src="vendors/angular-animate.min.js"></script>
+    <script src="vendors/angular-material.min.js"></script>
     <script src="vendors/moment.js"></script>
     <script src="scripts/client.js"></script>
     <script src="scripts/controllers/entry.controller.js"></script>
     <script src="scripts/controllers/projects.controller.js"></script>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="vendors/angular-material.css">
     <title>Time Tracker</title>
 </head>
-
 <body ng-app="myApp">
-    <h1>Time Tracker</h1>
-    <nav>
-        <h1><a href="/">Add Entry</a></h1>
-        <h1><a href="#!/projects">Manage Projects</a></h1>
-    </nav>
+    <header>
+        <h1 style="text-align: center;">Time Tracker</h1>
+        <nav style="text-align: center;">
+            <h1><a href="/">Add Entry</a></h1>
+            <h1><a href="#!/projects">Manage Projects</a></h1>
+        </nav>
+    </header>
     <ng-view></ng-view>
 </body>
 

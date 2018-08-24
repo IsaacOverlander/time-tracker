@@ -1,8 +1,58 @@
-.float-left {
-    float: left;
-    padding: 5px;
+
+body {
+    background-color: teal;
 }
+
+table {
+    border: 2px solid gray;
+}
+
+td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: white;
+    color: black;
+    width: 20%;
+}
+
+tr:nth-child(even) {
+    background-color: grey;
+}
+
+tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+tr:hover {background-color: #ddd;}
+
+
 
 .input-length {
     width: 150px;
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+
+.form-div {
+    border: 5px solid gray;
+    background-color: white;
+    margin-left: 27%;
+    width: 45%;
+}
+
+.table-div {
+    background-color: grey;
+    margin-left: 29%;
+    width: 42%;
 }

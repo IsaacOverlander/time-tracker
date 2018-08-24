@@ -20,7 +20,7 @@ myApp.controller('ProjectsController', function($http) {
     function getProjects() {
         $http({
             method: 'GET',
-            url: '/task/project'
+            url: '/task/project/data'
         }).then(function (response) {
             vm.projectList = response.data;
         }).catch(function (error) {

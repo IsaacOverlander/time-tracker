@@ -1,57 +1,58 @@
-<h1>Add an Entry</h1>
-
-<form ng-submit="ec.addEntry()">
-    <div class="float-left">
-        <label>Task</label>
-        <br>
-        <input type="text" placeholder="What did you do?" style="width: 42em;" ng-model="ec.task" required/>
-    </div>
-    <div class="float-left">
+<div class="header">
+    <h1>Add an Entry</h1>
+</div>
+<div class="form-div">
+    <form ng-submit="ec.addEntry()">
+        <md-input-container>
+            <label>Task</label>
+            <input type="text" placeholder="What did you do?" style="width: 42em;" ng-model="ec.task" required/>
+        </md-input-container>
+        <md-input-container>
             <label>Project</label>
-            <br>
-            <select ng-model="ec.project">
-                <option ng-repeat="project in ec.projectList" value="{{project.projectid}}">{{project.name}}</option>
-            </select>
-        </div>
-    <div class="float-left">
-        <label>Date</label>
-        <br>
-        <input type="date" ng-model="ec.date" value="2018-06-01" required/>
-    </div>
-    <div class="float-left">
-        <label>Start Time</label>
-        <br>
-        <input class="input-length" type="text" placeholder="Start Time" ng-model="ec.start" />
-    </div>
-    <div class="float-left">
-        <label>End Time</label>
-        <br>
-        <input class="input-length" type="text" placeholder="End Time" ng-model="ec.end" />
-    </div>
-    <br>
-    <div>
-        <input type="submit" value="Submit" />
-    </div>
-</form>
+            <md-select ng-model="ec.project" required>
+                <md-option ng-repeat="project in ec.projectList" value="{{project.projectid}}">{{project.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <label>Date</label>
+            <input type="date" ng-model="ec.date" value="2018-06-01" required/>
+        </md-input-container>
+        <md-input-container>
+            <label>Start Time</label>
+            <input class="input-length" type="text" placeholder="Start Time" ng-model="ec.start" required/>
+        </md-input-container>
+        <md-input-container>
+            <label>End Time</label>
+            <input class="input-length" type="text" placeholder="End Time" ng-model="ec.end" required/>
+        </md-input-container>
+        <md-input-container style="margin-bottom: 6%">
+            <md-button class="md-primary md-raised" type="submit">Submit</md-button>
+        </md-input-container>
+    </form>
+</div>
 <br>
-<h3>History</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Entry</Th>
-            <th>Project</th>
-            <th>Date</Th>
-            <th>Time(hours:minutes)</Th>
-            <th>Actions</Th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="entry in ec.entryList">
-            <td>{{entry.task}}</td>
-            <td>{{entry.name}}</td>
-            <td>{{entry.date}}</td>
-            <td>{{entry.hours}}:{{entry.minutes}}</td>
-            <td><button ng-click="ec.deleteEntry(entry)">Delete</button></td>
-        </tr>
-    </tbody>
-</table>
+<h1 style="text-align: center;">History</h1>
+<div class="table-div">
+    <table>
+        <thead>
+            <tr>
+                <th>Entry</Th>
+                <th>Project</th>
+                <th>Date</Th>
+                <th>Time(hours:minutes)</Th>
+                <th>Actions</Th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="entry in ec.entryList">
+                <td>{{entry.task}}</td>
+                <td>{{entry.name}}</td>
+                <td>{{entry.date | date : 'MM-dd-yyyy'}}</td>
+                <td>{{entry.hours}}:{{entry.minutes}}</td>
+                <td>
+                    <md-button class="md-warn md-raised" ng-click="ec.deleteEntry(entry)">Delete</md-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

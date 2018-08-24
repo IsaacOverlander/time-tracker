@@ -40,8 +40,18 @@ router.delete('/entry/:id', (req, res) => {
 });//End DELETE
 
 router.get('/project', (req, res) => {
-    const query = `SELECT "projects"."name", "entries"."project_id", SUM("entries"."hours") as hours, SUM("entries"."minutes") as minutes FROM "entries"
-    JOIN "projects" ON "projects"."projectid" = "entries"."project_id" GROUP BY "projects"."name", "entries"."project_id";`;
+    const query = `SELECT * FROM "projects";`;
+    pool.query(query).then((results) => {
+        console.log(results);
+        res.send(results.rows);
+    }).catch((error) => {
+        console.log('Error making GET:', error);
+        res.sendStatus(500);
+    });
+});//End GET
+
+router.get('/project/data', (req, res) => {
+    const query = `SELECT "projects"."name", SUM("entries"."hours") as hours, SUM("entries"."minutes") as minutes FROM "projects" JOIN "entries" ON "entries"."project_id" = "projects"."projectid" GROUP BY "projects"."name";`;
     pool.query(query).then((results) => {
         console.log(results);
         res.send(results.rows);
