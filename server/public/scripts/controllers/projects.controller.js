@@ -12,6 +12,7 @@ myApp.controller('ProjectsController', function($http) {
             url: '/task/project',
             data: vm.projectToAdd
         }).then(function (response) {
+            vm.projectToAdd = {};
             console.log('Project Added');
             getProjects();
         })
@@ -29,9 +30,10 @@ myApp.controller('ProjectsController', function($http) {
     }
 
     vm.deleteProject = function(project) {
+        console.log('in delete');
         $http({
             method: 'DELETE',
-            url: '/task/project/' + project.id
+            url: '/task/project/' + project.projectid
         }).then(function (response) {
             console.log('Project Deleted');
             getProjects();

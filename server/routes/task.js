@@ -51,7 +51,8 @@ router.get('/project', (req, res) => {
 });//End GET
 
 router.get('/project/data', (req, res) => {
-    const query = `SELECT "projects"."name", SUM("entries"."hours") as hours, SUM("entries"."minutes") as minutes FROM "projects" JOIN "entries" ON "entries"."project_id" = "projects"."projectid" GROUP BY "projects"."name";`;
+    const query = `SELECT "projects"."name", "projects"."projectid", SUM("entries"."hours") as hours, SUM("entries"."minutes") as minutes FROM "projects"
+                    LEFT JOIN "entries" ON "entries"."project_id" = "projects"."projectid" GROUP BY "projects"."name", "projects"."projectid";`;
     pool.query(query).then((results) => {
         console.log(results);
         res.send(results.rows);
@@ -74,7 +75,8 @@ router.post('/project', (req, res) => {
 
 router.delete('/project/:id', (req, res) => {
     const projectId = req.params.id;
-    const query = `DELETE FROM "projects" WHERE "id" = $1;`;
+    console.log(projectId);
+    const query = `DELETE FROM "projects" WHERE "projectid" = $1;`;
     pool.query(query, [projectId]).then((reults) => {
         res.sendStatus(200);
     }).catch((error) => {

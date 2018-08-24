@@ -11,9 +11,3 @@ myApp.config(function($routeProvider) {
         templateUrl: 'views/404.html'
     });
 });
-
-myApp.controller('GeneralController', function () {
-    const vm = this;
-
-    
-})

@@ -1,9 +1,8 @@
 myApp.controller('EntryController', function ($http) {
     const vm = this;
     vm.entryList = [];
-    let dateStarted = '';
     let timeSpent = 0;
-    vm.projectList = []
+    vm.projectList = [];
    
     vm.deleteEntry = function (entry) {
         $http({
@@ -18,12 +17,6 @@ myApp.controller('EntryController', function ($http) {
     };
 
     vm.addEntry = function () {
-        // //date variables
-        // const month = vm.date.getMonth() + 1;
-        // const day = vm.date.getDate();
-        // const year = vm.date.getFullYear();
-        // dateStarted = ([month, day, year].join('/'));
-        //Time variables
         const start = moment.utc(vm.start, 'HH:mm');
         const end = moment.utc(vm.end, 'HH:mm');
         timeSpent = moment.duration(end.diff(start));
@@ -46,6 +39,11 @@ myApp.controller('EntryController', function ($http) {
         }).then(function(response) {
             getEntries();
             console.log('Task created');
+            vm.start = '';
+            vm.end = '';
+            vm.task = '';
+            vm.project = '';
+            vm.date = '';
         }).catch(function (error) {
             console.log('Error creating task:', error);
         });//End POST

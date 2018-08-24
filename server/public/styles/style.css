@@ -1,6 +1,10 @@
+a {
+    text-decoration: none;
+    color: black;
+}
 
 body {
-    background-color: teal;
+    background-color: white;
 }
 
 table {
@@ -23,22 +27,17 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: grey;
+    background-color: rgb(180, 176, 176);
 }
 
 tr:nth-child(odd) {
-    background-color: lightgray;
+    background-color: lightgrey;
 }
 
 tr:hover {background-color: #ddd;}
 
-
-
-.input-length {
-    width: 150px;
-}
-
 .header {
+    background-color: teal;
     text-align: center;
     padding-bottom: 1px;
     padding-top: 1px;
@@ -55,6 +54,13 @@ tr:hover {background-color: #ddd;}
     background-color: grey;
     margin-left: 32%;
     width: 37%;
+}
+
+.project-form-div {
+    border: 5px solid gray;
+    background-color: white;
+    margin-left: 29%;
+    width: 40%;
 }
 
 .project-table-div {

@@ -1,18 +1,14 @@
-<div class="header">
-    <h1>Manage Projects</h1>
-</div>
-<div class="form-div">
+<h1 style="text-align: center;">Manage Projects</h1>
+<div class="project-form-div" style="text-align: center;">
     <form ng-submit="pc.addProject()">
-        <md-input-container>
+        <md-input-container style="width: 75%;">
             <label>Add a Project</label>
-            <input style="width: 700px;" type="text" placeholder="Project Name" ng-model="pc.name" />
+            <input style="width: 50%;" type="text" placeholder="Project Name" ng-model="pc.name" />
             <md-button class="md-primary md-raised" type="submit">Submit</md-button>
         </md-input-container>
     </form>
 </div>
-<div class="header">
-    <h1>Projects</h1>
-</div>
+<h1 style="text-align: center;">Projects</h1>
 <div class="project-table-div">
     <table>
         <thead>

@@ -19,13 +19,15 @@
     <link rel="stylesheet" href="vendors/angular-material.css">
     <title>Time Tracker</title>
 </head>
+
 <body ng-app="myApp">
-    <header>
+    <header class="header">
         <h1 style="text-align: center;">Time Tracker</h1>
         <nav style="text-align: center;">
-            <h1><a href="/">Add Entry</a></h1>
-            <h1><a href="#!/projects">Manage Projects</a></h1>
+            <md-button class="md-raised" md-colors="{background: 'cyan'}"><a href="/">Add Entry</a></md-button>
+            <md-button class="md-raised" md-colors="{background: 'cyan'}"><a href="#!/projects">Manage Projects</a></md-button>
         </nav>
+
     </header>
     <ng-view></ng-view>
 </body>
