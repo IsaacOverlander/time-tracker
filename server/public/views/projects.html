@@ -1,25 +1,33 @@
-<h1>Manage Projects</h1>
-
-<form ng-submit="pc.addProject()">
-        <label >Add a Project</label>
-        <br>
-        <input style="width: 300px;" type="text" placeholder="Project Name" ng-model="pc.name" />
-    <input type="submit" value="Submit">
-</form>
-
-<table>
-    <thead>
-        <tr>
-            <th>Project</th>
-            <th>Total hours</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="project in pc.projectList">
-            <td>{{project.name}}</td>
-            <td>{{project.hours}}:{{project.minutes}}</td>
-            <td><button ng-click="pc.deleteProject(project)">Delete</button></td>
-        </tr>
-    </tbody>
-</table>
+<div class="header">
+    <h1>Manage Projects</h1>
+</div>
+<div class="form-div">
+    <form ng-submit="pc.addProject()">
+        <md-input-container>
+            <label>Add a Project</label>
+            <input style="width: 700px;" type="text" placeholder="Project Name" ng-model="pc.name" />
+            <md-button class="md-primary md-raised" type="submit">Submit</md-button>
+        </md-input-container>
+    </form>
+</div>
+<div class="header">
+    <h1>Projects</h1>
+</div>
+<div class="project-table-div">
+    <table>
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Total hours</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="project in pc.projectList">
+                <td>{{project.name}}</td>
+                <td>{{project.hours}}:{{project.minutes}}</td>
+                <td><button ng-click="pc.deleteProject(project)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

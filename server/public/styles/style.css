@@ -53,6 +53,12 @@ tr:hover {background-color: #ddd;}
 
 .table-div {
     background-color: grey;
-    margin-left: 29%;
-    width: 42%;
+    margin-left: 32%;
+    width: 37%;
+}
+
+.project-table-div {
+    background-color: grey;
+    margin-left: 37%;
+    width: 25%;
 }
