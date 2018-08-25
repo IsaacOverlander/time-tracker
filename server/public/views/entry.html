@@ -31,6 +31,13 @@
 </div>
 <br>
 <h1 style="text-align: center;">History</h1>
+<div style="text-align: center;">
+    <span ><em><b>Sort By:</b></em></span>
+    <md-button class="md-button md-raised" ng-click="ec.sortFunction('task')">Entry</md-button>
+    <md-button class="md-button md-raised" ng-click="ec.sortFunction('project')">Project</md-button>
+    <md-button class="md-button md-raised" ng-click="ec.sortFunction('date')">Date</md-button>
+    <md-button class="md-button md-raised" ng-click="ec.sortFunction('time')">Time</md-button>
+</div>
 <div class="table-div">
     <table>
         <thead>
@@ -43,13 +50,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="entry in ec.entryList">
+            <tr ng-repeat="entry in ec.entryList | orderBy : ec.sort : ec.bool">
                 <td>{{entry.task}}</td>
                 <td>{{entry.name}}</td>
                 <td>{{entry.date | date : 'MM-dd-yyyy'}}</td>
                 <td>{{entry.hours}}:{{entry.minutes}}</td>
                 <td>
-                    <md-button class="md-warn md-raised" ng-click="ec.deleteEntry(entry)">Delete</md-button>
+                    <md-button class="md-raised" md-colors="{background: 'red'}" ng-click="ec.deleteEntry(entry)">Delete</md-button>
                 </td>
             </tr>
         </tbody>
