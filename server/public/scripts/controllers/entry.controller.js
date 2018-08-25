@@ -4,8 +4,10 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
     let timeSpent = 0;
     vm.projectList = [];
     vm.sort = 'task';
-    vm.bool = false;
-   
+    vm.sortBool = false;
+    vm.editBool = false;
+    let entryId = 0;
+
     vm.deleteEntry = function (entry) {
         $mdDialog.show(
             $mdDialog.confirm()
@@ -13,15 +15,15 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
                 .textContent('You cannot undo this action')
                 .ok('Delete')
                 .cancel('Cancel')
-        ).then(function() {
+        ).then(function () {
             $http({
                 method: 'DELETE',
                 url: '/task/entry/' + entry.id
             }).then(function (response) {
                 $mdToast.show(
                     $mdToast.simple()
-                    .textContent('Task Deleted!')
-                    .hideDelay(3000)
+                        .textContent('Task Deleted!')
+                        .hideDelay(3000)
                 );
                 console.log('Entry Deleted');
                 getEntries();
@@ -33,7 +35,7 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
                 );
                 console.log(error);
             });//End DELETE
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.log(error);
             $mdDialog.show(
                 $md.alert()
@@ -41,12 +43,12 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
                     .ok('Okay')
             );
         });
-        
+
     };
 
-    vm.sortFunction = function(sort) {
+    vm.sortFunction = function (sort) {
         vm.sort = sort;
-        vm.bool = !vm.bool;
+        vm.sortBool = !vm.sortBool;
     }
 
     vm.addEntry = function () {
@@ -55,35 +57,84 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
         timeSpent = moment.duration(end.diff(start));
         const hours = timeSpent._data.hours;
         const minutes = timeSpent._data.minutes;
-        
-                
         vm.entryToAdd = {
             task: vm.task,
             date: vm.date,
             hours: hours,
             minutes: minutes,
-            project: Number(vm.project)
+            project: Number(vm.project),
+            start: vm.start,
+            end: vm.end
         }
+
+        if (vm.editBool) {
+            $http({
+                method: 'PUT',
+                url: '/task/entry/update/' + entryId,
+                data: vm.entryToAdd
+            }).then(function (response) {
+                getEntries();
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Entry Updated!')
+                        .hideDelay(3000)
+                );
+                vm.start = '';
+                vm.end = '';
+                vm.task = '';
+                vm.project = '';
+                vm.date = '';
+                vm.editBool = false;
+            }).catch(function (error) {
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .title('Error editing Entry')
+                        .ok('Okay')
+                );
+            });//End PUT
+        }
+        else {
+            $http({
+                method: 'POST',
+                url: '/task/entry',
+                data: vm.entryToAdd
+            }).then(function (response) {
+                getEntries();
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Task Added!')
+                        .hideDelay(3000)
+                );
+                vm.start = '';
+                vm.end = '';
+                vm.task = '';
+                vm.project = '';
+                vm.date = '';
+            }).catch(function (error) {
+                console.log('Error creating task:', error);
+            });//End POST
+        }
+    }
+
+    vm.editEntry = function (entry) {
+        console.log('in edot');
         
-        $http({
-            method: 'POST',
-            url: '/task/entry',
-            data: vm.entryToAdd
-        }).then(function(response) {
-            getEntries();
-            $mdToast.show(
-                $mdToast.simple()
-                .textContent('Task Added!')
-                .hideDelay(3000)
-            );
+        vm.editBool = !vm.editBool;
+        if (vm.editBool) {
+            vm.start = entry.start;
+            vm.end = entry.end;
+            vm.task = entry.task;
+            vm.project = entry.projectid;
+            vm.date = entry.date;
+            entryId = entry.id;
+        }
+        else {
             vm.start = '';
             vm.end = '';
             vm.task = '';
             vm.project = '';
             vm.date = '';
-        }).catch(function (error) {
-            console.log('Error creating task:', error);
-        });//End POST
+        }
     }
 
     function getEntries() {

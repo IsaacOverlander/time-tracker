@@ -1,5 +1,6 @@
-
-<h1 style="text-align: center;">Add an Entry</h1>
+<h1 style="text-align: center;" ng-hide="ec.editBool">
+    Add an Entry</h1>
+<h1 style="text-align: center;" ng-show="ec.editBool">Edit an Entry</h1>
 <div class="form-div">
     <form ng-submit="ec.addEntry()" style="width: 100%">
         <md-input-container style="width: 100%;">
@@ -31,8 +32,8 @@
 </div>
 <br>
 <h1 style="text-align: center;">History</h1>
-<div style="text-align: center;">
-    <span ><em><b>Sort By:</b></em></span>
+<div style="text-align: center; margin-left: 1%;">
+    <span><em><b>Sort By:</b></em></span>
     <md-button class="md-button md-raised" ng-click="ec.sortFunction('task')">Entry</md-button>
     <md-button class="md-button md-raised" ng-click="ec.sortFunction('project')">Project</md-button>
     <md-button class="md-button md-raised" ng-click="ec.sortFunction('date')">Date</md-button>
@@ -53,12 +54,17 @@
             <tr ng-repeat="entry in ec.entryList | orderBy : ec.sort : ec.bool">
                 <td>{{entry.task}}</td>
                 <td>{{entry.name}}</td>
-                <td>{{entry.date | date : 'MM-dd-yyyy'}}</td>
+                <td>{{entry.date | date : 'MM/dd/yyyy'}}</td>
                 <td>{{entry.hours}}:{{entry.minutes}}</td>
                 <td>
                     <md-button class="md-raised" md-colors="{background: 'red'}" ng-click="ec.deleteEntry(entry)">Delete</md-button>
+                    <md-button class="md-raised md-warn" ng-click="ec.editEntry(entry)">Edit</md-button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+<footer>
+    <div style="height: 50px;"></div>
+    <p>Made by Isaac Overlander</p>
+</footer>

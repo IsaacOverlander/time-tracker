@@ -18,14 +18,27 @@ router.get('/entry', (req, res) => {
 router.post('/entry', (req, res) => {
     entryToAdd = req.body;
     
-    const query = `INSERT INTO "entries" ("task", "date", "hours", "minutes", "project_id")
-                    VALUES ($1, $2, $3, $4, $5);`;
-    pool.query(query, [entryToAdd.task, entryToAdd.date, entryToAdd.hours, entryToAdd.minutes, entryToAdd.project]).then((results) => {
+    const query = `INSERT INTO "entries" ("task", "date", "hours", "minutes", "project_id", "start", "end")
+                    VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+    pool.query(query, [entryToAdd.task, entryToAdd.date, entryToAdd.hours, entryToAdd.minutes, entryToAdd.project, entryToAdd.start, entryToAdd.end]).then((results) => {
         res.sendStatus(201);
     }).catch((error) => {
         res.sendStatus(500);
     });//End Query
 });// End POST
+
+router.put('/entry/update/:id', (req, res) => {
+    entryId = req.params.id;
+    entry = req.body;
+    query = `UPDATE "entries" SET "task" = $1, "date" = $2, "hours" = $3,
+             "minutes" = $4, "project_id" = $5, "start" = $6, "end" = $7 WHERE "id" = $8;`;
+    pool.query(query, [entry.task, entry.date, entry.hours, entry.minutes, entry.project, entry.start, entry.end, entryId])
+    .then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });//End query
+});// End PUT
 
 router.delete('/entry/:id', (req, res) => {
     const entryId = req.params.id;
@@ -71,7 +84,18 @@ router.post('/project', (req, res) => {
     }).catch((error) => {
         res.sendStatus(500);
     });//End Query
-})
+});//End POST
+
+router.put('/project/update/:id', (req, res) => {
+    projectId = req.params.id;
+    project = req.body;
+    query = `UPDATE "projects" SET "name" = $1 WHERE "projectid" = $2;`;
+    pool.query(query, [project.name, projectId]).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });//End query
+});//End PUT
 
 router.delete('/project/:id', (req, res) => {
     const projectId = req.params.id;

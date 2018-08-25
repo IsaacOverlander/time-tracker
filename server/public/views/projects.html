@@ -1,4 +1,5 @@
-<h1 style="text-align: center;">Manage Projects</h1>
+<h1 style="text-align: center;" ng-hide="pc.projectEditBool">Add Projects</h1>
+<h1 style="text-align: center;" ng-show="pc.projectEditBool">Edit Projects</h1>
 <div class="project-form-div" style="text-align: center;">
     <form ng-submit="pc.addProject()">
         <md-input-container style="width: 75%;">
@@ -22,7 +23,10 @@
             <tr ng-repeat="project in pc.projectList">
                 <td>{{project.name}}</td>
                 <td>{{project.hours}}:{{project.minutes}}</td>
-                <td><button ng-click="pc.deleteProject(project)">Delete</button></td>
+                <td>
+                    <md-button class="md-raised" md-colors="{background: 'red'}" ng-click="pc.deleteProject(project)">Delete</md-button>
+                    <md-button class="md-raised md-warn" ng-click="pc.editProject(project)">Edit</md-button>
+                </td>
             </tr>
         </tbody>
     </table>
