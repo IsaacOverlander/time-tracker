@@ -1,5 +1,6 @@
 const myApp = angular.module('myApp', ['ngMaterial', 'ngRoute']);
 
+//routes to each view
 myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'views/entry.html',

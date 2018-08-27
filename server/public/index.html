@@ -8,23 +8,30 @@
     <!-- Base Angular -->
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
+    <!-- Angular Material -->
     <script src="vendors/angular-aria.min.js"></script>
     <script src="vendors/angular-animate.min.js"></script>
     <script src="vendors/angular-material.min.js"></script>
+    <!-- Moment.js -->
     <script src="vendors/moment.js"></script>
+    <!-- Chart.js -->
     <script src="vendors/Chart.js"></script>
+    <!-- Client -->
     <script src="scripts/client.js"></script>
     <script src="scripts/controllers/entry.controller.js"></script>
     <script src="scripts/controllers/projects.controller.js"></script>
     <script src="scripts/controllers/reports.controller.js"></script>
+    <!-- styles -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="vendors/angular-material.css">
+
     <title>Time Tracker</title>
 </head>
 
 <body ng-app="myApp">
     <header class="header">
         <h1 style="text-align: center;">Time Tracker</h1>
+        <!-- Navigation -->
         <nav style="text-align: center;">
             <a href="/"><md-button class="md-raised" md-colors="{background: 'cyan'}">Add Entry</md-button></a>
             <a href="#!/projects"><md-button class="md-raised" md-colors="{background: 'cyan'}">Manage Projects</md-button></a>
@@ -32,8 +39,13 @@
         </nav>
 
     </header>
-        <ng-view></ng-view>
+    <ng-view></ng-view>
+    <!-- Chart (only shown on reports view) -->
     <canvas style="display: none;" id="myChart"></canvas>
+    <footer>
+        <div style="height: 50px;"></div>
+        <p>Made by Isaac Overlander</p>
+    </footer>
 </body>
 
 </html>

@@ -26,14 +26,15 @@
  - [x] Create DELETE route for entries
  - [x] Create projects form
  - [x] Create table to display projects
- - [ ] Create GET route for projects
- - [ ] Create POST route for projects
- - [ ] Create DELETE route for projects
- 
- 
-
-## Strech Goals
- 
+ - [x] Create GET route for projects
+ - [x] Create POST route for projects
+ - [x] Create DELETE route for projects
+ - [x] Create a view for reports
+ - [x] Create a GET route for reports
+ - [x] Source in Chart.js
+ - [x] Set up a Canvas for the chart
+ - [x] Fill in the chart data
+ - [x] Fix Remaining errors 
 
 ### Author
     Isaac Overlander

@@ -1,14 +1,17 @@
 myApp.controller("ReportController", function ($http, $mdDialog, $mdToast) {
     console.log('ReportController Reporting');
     const vm = this;
+    // array to store project information
     vm.projectList = [];
-    vm.showChart = true;
+    // array to store project names for chart
     let projectNames = []
+    //array to store project times for chart
     let projectTime = []
-
+    // Makes chart visible in report view
     document.getElementById("myChart").setAttribute('style', "display: block;");
     getProjects();
 
+    // GETs project data to use in the chart
     function getProjects() {
         $http({
             method: 'GET',
@@ -20,7 +23,7 @@ myApp.controller("ReportController", function ($http, $mdDialog, $mdToast) {
             console.log(error);
         });//End GET
     }
-
+    // sets chart values
     function setValues() {
 
         for (let project of vm.projectList) {

@@ -3,13 +3,15 @@ CREATE TABLE "entries" (
 	"task" VARCHAR(200) NOT NULL,
 	"date" VARCHAR(15) NOT NULL,
 	"hours" INTEGER NOT NULL,
-	"minutes" INTEGER NOT NULL
+	"minutes" INTEGER NOT NULL,
+	"start" VARCHAR(10),
+	"end" VARCHAR(10),
+	"project_id" INTEGER REFERENCES "projects"."projectid"
 );
 
 CREATE TABLE "projects" (
-	"id" SERIAL PRIMARY KEY,
-	"name" VARCHAR(50),
-	"date_id"
+	"projectid" SERIAL PRIMARY KEY,
+	"name" VARCHAR(50)
 );
 
 INSERT INTO "projects" ("name")

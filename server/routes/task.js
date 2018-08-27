@@ -14,10 +14,9 @@ router.get('/entry', (req, res) => {
         res.sendStatus(500);
     });//End Query
 });//End GET
-
+//POST route for adding entries
 router.post('/entry', (req, res) => {
     entryToAdd = req.body;
-    
     const query = `INSERT INTO "entries" ("task", "date", "hours", "minutes", "project_id", "start", "end")
                     VALUES ($1, $2, $3, $4, $5, $6, $7);`;
     pool.query(query, [entryToAdd.task, entryToAdd.date, entryToAdd.hours, entryToAdd.minutes, entryToAdd.project, entryToAdd.start, entryToAdd.end]).then((results) => {
@@ -26,7 +25,7 @@ router.post('/entry', (req, res) => {
         res.sendStatus(500);
     });//End Query
 });// End POST
-
+//PUT route for updating entries
 router.put('/entry/update/:id', (req, res) => {
     entryId = req.params.id;
     entry = req.body;
@@ -39,7 +38,7 @@ router.put('/entry/update/:id', (req, res) => {
         res.sendStatus(500);
     });//End query
 });// End PUT
-
+//DELETE route for removing entries
 router.delete('/entry/:id', (req, res) => {
     const entryId = req.params.id;
     console.log(entryId);
@@ -51,7 +50,7 @@ router.delete('/entry/:id', (req, res) => {
         res.sendStatus(500);
     });//End query
 });//End DELETE
-
+//GET route for projects
 router.get('/project', (req, res) => {
     const query = `SELECT * FROM "projects";`;
     pool.query(query).then((results) => {
@@ -62,7 +61,7 @@ router.get('/project', (req, res) => {
         res.sendStatus(500);
     });
 });//End GET
-
+//GET route for project data
 router.get('/project/data', (req, res) => {
     const query = `SELECT "projects"."name", "projects"."projectid", SUM("entries"."hours") as hours, SUM("entries"."minutes") as minutes FROM "projects"
                     LEFT JOIN "entries" ON "entries"."project_id" = "projects"."projectid" GROUP BY "projects"."name", "projects"."projectid";`;
@@ -74,7 +73,7 @@ router.get('/project/data', (req, res) => {
         res.sendStatus(500);
     });
 });//End GET
-
+//POST route for adding projects
 router.post('/project', (req, res) => {
     projectToAdd = req.body;
     const query = `INSERT INTO "projects" ("name")
@@ -85,7 +84,7 @@ router.post('/project', (req, res) => {
         res.sendStatus(500);
     });//End Query
 });//End POST
-
+//PUT route for updating projects
 router.put('/project/update/:id', (req, res) => {
     projectId = req.params.id;
     project = req.body;
@@ -96,7 +95,7 @@ router.put('/project/update/:id', (req, res) => {
         res.sendStatus(500);
     });//End query
 });//End PUT
-
+//DELETE route for removing projects
 router.delete('/project/:id', (req, res) => {
     const projectId = req.params.id;
     console.log(projectId);

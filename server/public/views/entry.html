@@ -2,11 +2,12 @@
     Add an Entry</h1>
 <h1 style="text-align: center;" ng-show="ec.editBool">Edit an Entry</h1>
 <div class="form-div">
+    <!-- form for adding/editing entries -->
     <form ng-submit="ec.addEntry()" style="width: 100%">
 
         <md-input-container style="width: 100%;">
             <label>Task</label>
-            <input type="text" placeholder="What did you do?" ng-model="ec.task" required/>
+            <input type="text" ng-model="ec.task" required/>
         </md-input-container>
 
         <md-input-container style="width: 20%; margin-top: -6px;">
@@ -24,12 +25,12 @@
 
         <md-input-container style="width: 15%;">
             <label>Start Time</label>
-            <input type="text" placeholder="Start Time" ng-model="ec.start" required/>
+            <input type="text" ng-model="ec.start" required/>
         </md-input-container>
 
         <md-input-container style="width: 15%;">
             <label>End Time</label>
-            <input type="text" placeholder="End Time" ng-model="ec.end" required/>
+            <input type="text" ng-model="ec.end" required/>
         </md-input-container>
 
         <md-input-container style="width: 15%;">
@@ -39,6 +40,7 @@
 </div>
 <br>
 <h1 style="text-align: center;">History</h1>
+<!-- buttons for sorting data in the entry table -->
 <div style="text-align: center; margin-left: 1%;">
     <span><em><b>Sort By:</b></em></span>
     <md-button class="md-button md-raised" ng-click="ec.sortFunction('task')">Entry</md-button>
@@ -46,6 +48,7 @@
     <md-button class="md-button md-raised" ng-click="ec.sortFunction('date')">Date</md-button>
     <md-button class="md-button md-raised" ng-click="ec.sortFunction('time')">Time</md-button>
 </div>
+<!-- table for displaying entries -->
 <div class="table-div">
     <table>
         <thead>
@@ -58,11 +61,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="entry in ec.entryList | orderBy : ec.sort : ec.bool">
+            <tr ng-repeat="entry in ec.entryList | orderBy : ec.sort : ec.sortBool">
                 <td>{{entry.task}}</td>
                 <td>{{entry.name}}</td>
                 <td>{{entry.date | date : 'MM/dd/yyyy'}}</td>
                 <td>{{entry.hours}}:{{entry.minutes}}</td>
+                <!-- buttons for deleting/editing entries -->
                 <td>
                     <md-button class="md-raised" md-colors="{background: 'red'}" ng-click="ec.deleteEntry(entry)">Delete</md-button>
                     <md-button class="md-raised md-warn" ng-click="ec.editEntry(entry)">Edit</md-button>
@@ -71,7 +75,3 @@
         </tbody>
     </table>
 </div>
-<footer>
-    <div style="height: 50px;"></div>
-    <p>Made by Isaac Overlander</p>
-</footer>

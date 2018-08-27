@@ -1,14 +1,20 @@
 myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
     const vm = this;
+    // array for storing entries
     vm.entryList = [];
+    // variable for getting time
     let timeSpent = 0;
+    // array for storing project information
     vm.projectList = [];
+    // variable for sortBy
     vm.sort = 'task';
+    // variable to set reversed in sortBy
     vm.sortBool = false;
+    // variable for changing form to an edit form
     vm.editBool = false;
-    let entryId = 0;
+    // variable for setting date input to today's date
     vm.date = new Date();
-
+    // function for removing entries
     vm.deleteEntry = function (entry) {
         $mdDialog.show(
             $mdDialog.confirm()
@@ -46,12 +52,12 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
         });
 
     };
-
+    // function for setting sort variables
     vm.sortFunction = function (sort) {
         vm.sort = sort;
         vm.sortBool = !vm.sortBool;
     }
-
+    // function for adding/editing entries
     vm.addEntry = function () {
         const start = moment.utc(vm.start, 'HH:mm');
         const end = moment.utc(vm.end, 'HH:mm');
@@ -113,11 +119,13 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
         vm.project = 0;
         vm.date = new Date();
     }
-
+    // function for setting values when editing
     vm.editEntry = function (entry) {
-        console.log('in edot');
+        console.log('in edit');
         
         vm.editBool = !vm.editBool;
+
+        
         if (vm.editBool) {
             vm.start = entry.start;
             vm.end = entry.end;
@@ -134,7 +142,7 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
             vm.date = '';
         }
     }
-
+    // function for GETting entry informtion
     function getEntries() {
         $http({
             method: 'GET',
@@ -151,7 +159,7 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
             );
         });
     };
-
+    // function for GETting project information
     function getProjects() {
         $http({
             method: 'GET',
@@ -162,8 +170,9 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
             console.log(error);
         });//End GET
     }
-
+    // makes chart hidden on entries view
     document.getElementById("myChart").setAttribute('style', "display: none;");
+    // calls to GET functions
     getProjects();
     getEntries();
 });
