@@ -7,6 +7,9 @@ myApp.config(function($routeProvider) {
     }).when('/projects', {
         templateUrl: 'views/projects.html',
         controller: 'ProjectsController as pc'
+    }).when('/reports', {
+        templateUrl: "views/reports.html",
+        controller: "ReportController as rc"
     }).otherwise({
         templateUrl: 'views/404.html'
     });

@@ -7,6 +7,7 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
     vm.sortBool = false;
     vm.editBool = false;
     let entryId = 0;
+    vm.date = new Date();
 
     vm.deleteEntry = function (entry) {
         $mdDialog.show(
@@ -57,6 +58,8 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
         timeSpent = moment.duration(end.diff(start));
         const hours = timeSpent._data.hours;
         const minutes = timeSpent._data.minutes;
+        console.log(vm.date);
+        
         vm.entryToAdd = {
             task: vm.task,
             date: vm.date,
@@ -79,11 +82,6 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
                         .textContent('Entry Updated!')
                         .hideDelay(3000)
                 );
-                vm.start = '';
-                vm.end = '';
-                vm.task = '';
-                vm.project = '';
-                vm.date = '';
                 vm.editBool = false;
             }).catch(function (error) {
                 $mdDialog.show(
@@ -105,15 +103,15 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
                         .textContent('Task Added!')
                         .hideDelay(3000)
                 );
-                vm.start = '';
-                vm.end = '';
-                vm.task = '';
-                vm.project = '';
-                vm.date = '';
             }).catch(function (error) {
                 console.log('Error creating task:', error);
             });//End POST
         }
+        vm.start = ' ';
+        vm.end = ' ';
+        vm.task = ' ';
+        vm.project = 0;
+        vm.date = new Date();
     }
 
     vm.editEntry = function (entry) {
@@ -125,7 +123,7 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
             vm.end = entry.end;
             vm.task = entry.task;
             vm.project = entry.projectid;
-            vm.date = entry.date;
+            vm.date = new Date(entry.date);
             entryId = entry.id;
         }
         else {
@@ -165,6 +163,7 @@ myApp.controller('EntryController', function ($http, $mdDialog, $mdToast) {
         });//End GET
     }
 
+    document.getElementById("myChart").setAttribute('style', "display: none;");
     getProjects();
     getEntries();
 });

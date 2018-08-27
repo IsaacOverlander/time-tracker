@@ -66,6 +66,7 @@ myApp.controller('ProjectsController', function ($http, $mdDialog, $mdToast) {
         });//End GET
     }
 
+    document.getElementById("myChart").setAttribute('style', "display: none;");
     vm.deleteProject = function (project) {
         console.log('in delete');
         $http({
@@ -78,6 +79,5 @@ myApp.controller('ProjectsController', function ($http, $mdDialog, $mdToast) {
             console.log(error);
         });//End DELETE
     }
-
     getProjects();
 });
