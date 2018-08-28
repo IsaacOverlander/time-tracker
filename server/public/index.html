@@ -33,8 +33,8 @@
         <h1 style="text-align: center;">Time Tracker</h1>
         <!-- Navigation -->
         <nav style="text-align: center;">
-            <a href="/"><md-button class="md-raised" md-colors="{background: 'cyan'}">Add Entry</md-button></a>
-            <a href="#!/projects"><md-button class="md-raised" md-colors="{background: 'cyan'}">Manage Projects</md-button></a>
+            <a href="/"><md-button class="md-raised" md-colors="{background: 'cyan'}">Manage Projects</md-button></a>
+            <a href="#!/entries"><md-button class="md-raised" md-colors="{background: 'cyan'}">Add Entry</md-button></a>
             <a href="#!/reports"><md-button class="md-raised" md-colors="{background: 'cyan'}">Reports</md-button></a>
         </nav>
 
@@ -42,10 +42,7 @@
     <ng-view></ng-view>
     <!-- Chart (only shown on reports view) -->
     <canvas style="display: none;" id="myChart"></canvas>
-    <footer>
-        <div style="height: 50px;"></div>
-        <p>Made by Isaac Overlander</p>
-    </footer>
+
 </body>
 
 </html>

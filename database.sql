@@ -1,3 +1,5 @@
+CREATE DATABASE "time_tracker";
+
 CREATE TABLE "entries" (
 	"id" SERIAL PRIMARY KEY,
 	"task" VARCHAR(200) NOT NULL,

@@ -22,6 +22,7 @@ router.post('/entry', (req, res) => {
     pool.query(query, [entryToAdd.task, entryToAdd.date, entryToAdd.hours, entryToAdd.minutes, entryToAdd.project, entryToAdd.start, entryToAdd.end]).then((results) => {
         res.sendStatus(201);
     }).catch((error) => {
+        console.log(error);
         res.sendStatus(500);
     });//End Query
 });// End POST
