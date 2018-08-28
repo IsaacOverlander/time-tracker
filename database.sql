@@ -3,7 +3,7 @@ CREATE DATABASE "time_tracker";
 CREATE TABLE "entries" (
 	"id" SERIAL PRIMARY KEY,
 	"task" VARCHAR(200) NOT NULL,
-	"date" VARCHAR(15) NOT NULL,
+	"date" VARCHAR(50) NOT NULL,
 	"hours" INTEGER NOT NULL,
 	"minutes" INTEGER NOT NULL,
 	"start" VARCHAR(10),
