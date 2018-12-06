@@ -11,10 +11,11 @@ Node.js
 
 ## SetUp
 
-Clone project
-Run npm install
-Run npm start
-Run queries in databse.sql
+    Clone project
+    Run npm install
+    Run npm start
+    Run queries in databse.sql
 
 ### Author
-    Isaac Overlander
+
+Isaac Overlander
